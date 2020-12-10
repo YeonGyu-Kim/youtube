@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./app.css";
+import GlobalStyles from "./components/globalStyles";
 import VideoList from "./components/video_list/video_list";
 
 function App() {
@@ -19,7 +20,12 @@ function App() {
       .catch((error) => console.log("error", error));
   }, []);
 
-  return <VideoList key={videos.id} videos={videos} />;
+  return (
+    <>
+      <GlobalStyles />
+      <VideoList key={videos.id} videos={videos} />
+    </>
+  );
 }
 
 export default App;
