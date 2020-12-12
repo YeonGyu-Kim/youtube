@@ -1,0 +1,15 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail {
+  padding: 0.2em;
+}
+
+.description {
+  white-space: pre-wrap;
+}
+.content {
+  padding: 1rem;
+}
