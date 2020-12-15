@@ -5,3 +5,16 @@
 .content {
   display: flex;
 }
+
+.detail {
+  flex: 1 1 65%;
+}
+
+.list {
+  flex: 1 1 35%;
+}
+@media screen and (max-width: 48rem) {
+  .content {
+    flex-direction: column;
+  }
+}
