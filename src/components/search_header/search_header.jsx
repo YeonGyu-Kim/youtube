@@ -27,7 +27,7 @@ const SearchHeader = memo(({ onSearch }) => {
           src='images/logo.png'
           alt='logo'
         ></img>
-        <span className={styles.title}>YouTubesssss</span>
+        <span className={styles.title}>YouTube</span>
       </div>
 
       <input
