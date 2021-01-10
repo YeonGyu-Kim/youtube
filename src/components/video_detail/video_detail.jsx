@@ -6,8 +6,9 @@ const VideoDetail = ({ video }) => (
     <iframe
       src={`https://www.youtube.com/embed/${video.id}`}
       width='100%'
-      height='405'
+      height='500'
       frameBorder='0'
+      title='video'
       allowFullScreen
     ></iframe>
     <div className={styles.contents}>

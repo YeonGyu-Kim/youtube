@@ -8,7 +8,8 @@ class Youtube {
         key: key,
         part: "snippet",
         chart: "mostPopular",
-        maxResults: 25,
+        maxResults: 40,
+        regionCode: "KR",
       },
     });
   }

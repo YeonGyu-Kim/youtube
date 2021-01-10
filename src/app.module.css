@@ -1,18 +1,20 @@
-.app {
-  max-width: 80rem;
-}
-
 .content {
   display: flex;
+  padding: 1.5rem;
 }
 
 .detail {
-  flex: 1 1 65%;
+  flex: 1 1 70%;
 }
 
 .list {
-  flex: 1 1 35%;
+  flex: 1 1 30%;
 }
+
+.category {
+  width: 15%;
+}
+
 @media screen and (max-width: 48rem) {
   .content {
     flex-direction: column;

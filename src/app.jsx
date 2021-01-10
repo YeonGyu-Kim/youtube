@@ -4,6 +4,7 @@ import GlobalStyles from "./components/globalStyles";
 import VideoList from "./components/video_list/video_list";
 import SearchHeader from "./components/search_header/search_header";
 import VideoDetail from "./components/video_detail/video_detail";
+import VideoCategory from "./components/video_category/video_category";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
@@ -28,6 +29,11 @@ function App({ youtube }) {
     <div className={styles.app}>
       <SearchHeader onSearch={search} />
       <section className={styles.content}>
+        {!selectedVideo && (
+          <ul className={styles.category}>
+            <VideoCategory />
+          </ul>
+        )}
         {selectedVideo && (
           <div className={styles.detail}>
             <VideoDetail video={selectedVideo} />

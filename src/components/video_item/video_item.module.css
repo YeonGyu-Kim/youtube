@@ -1,43 +1,64 @@
 .container {
   padding: 0.5em;
+  cursor: pointer;
 }
 
 .container.grid {
-  width: 50%;
+  width: 25%;
 }
 
 .container.list {
   width: 100%;
+  height: 8rem;
 }
 
 .video {
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
   border: 1px solid inherit;
   cursor: pointer;
   transition: all 0.2s ease-in;
   box-shadow: 7px 8px 7px -1px rgba(0, 0, 0, 0.75);
 }
 
+.videoList {
+  display: flex;
+}
+
 .container:hover {
   transform: scale(1.02);
 }
 
-.thumbnail {
-  width: 40%;
+.thumbnailGrid {
+  width: 100%;
+  height: 58%;
+}
+
+.thumbnailList {
+  width: 45%;
   height: 100%;
 }
 
 .text {
-  display: flex;
-  flex-direction: column;
   margin: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
+  padding-bottom: 2rem;
+}
+
+.textList {
+  justify-content: flex-start;
+}
+
+.title {
+  margin: 0.5rem 0;
+  display: block;
+  overflow: hidden;
+  max-height: 2.4em;
+  line-height: 1.2em;
 }
 
 .channelTitle {
+  display: block;
   font-size: 0.75rem;
   margin-top: 1rem;
   opacity: 0.9;
