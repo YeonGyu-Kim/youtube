@@ -1,13 +1,15 @@
 import React, { memo, useRef } from "react";
+import { Link, useHistory } from "react-router-dom";
 import styles from "./search_header.module.css";
 
-const SearchHeader = memo(({ onSearch }) => {
+const SearchHeader = memo(({ onSearch, selectVideo }) => {
+  const history = useHistory();
   const inputRef = useRef();
 
   const handleSearch = () => {
     const value = inputRef.current.value;
     onSearch(value);
-    console.log(value);
+    history.push("/");
   };
   const onClick = () => {
     handleSearch();
@@ -19,6 +21,12 @@ const SearchHeader = memo(({ onSearch }) => {
     }
   };
 
+  const goHome = () => {
+    selectVideo(null);
+    history.push("/");
+    window.location.reload();
+  };
+
   return (
     <header className={styles.container}>
       <div className={styles.home}>
@@ -27,7 +35,9 @@ const SearchHeader = memo(({ onSearch }) => {
           src='images/logo.png'
           alt='logo'
         ></img>
-        <span className={styles.title}>YouTube</span>
+        <span className={styles.title} onClick={goHome}>
+          YouTube
+        </span>
       </div>
 
       <input

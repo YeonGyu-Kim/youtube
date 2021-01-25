@@ -1,4 +1,11 @@
 .videos {
   display: flex;
   flex-wrap: wrap;
+  padding: 1.5em;
+}
+
+.videoList {
+  flex: 1 1 15%;
+  padding: 1em;
+  padding-left: 0;
 }

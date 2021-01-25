@@ -7,15 +7,18 @@ class Youtube {
       params: {
         key: key,
         part: "snippet",
-        chart: "mostPopular",
-        maxResults: 40,
+        maxResults: 20,
         regionCode: "KR",
       },
     });
   }
 
   async mostPopular() {
-    const response = await this.youtube.get("videos");
+    const response = await this.youtube.get("videos", {
+      params: {
+        chart: "mostPopular",
+      },
+    });
     return response.data.items;
   }
 
@@ -30,6 +33,16 @@ class Youtube {
       ...item,
       id: item.id.videoId,
     }));
+  }
+
+  async sports() {
+    const response = await this.youtube.get("videos", {
+      params: {
+        chart: "mostPopular",
+        videoCategoryId: 17,
+      },
+    });
+    return response.data.items;
   }
 }
 

@@ -1,18 +1,24 @@
 .content {
   display: flex;
-  padding: 1.5rem;
-}
-
-.detail {
-  flex: 1 1 70%;
+  padding: 0;
 }
 
 .list {
-  flex: 1 1 30%;
+  flex: 1 1 85%;
+}
+
+.detail {
+  display: flex;
+}
+
+.sportsList {
+  width: 100%;
+  height: 100%;
 }
 
 .category {
-  width: 15%;
+  flex: 1 1 15%;
+  background-color: #202020;
 }
 
 @media screen and (max-width: 48rem) {
