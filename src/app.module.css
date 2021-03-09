@@ -9,6 +9,7 @@
 
 .detail {
   display: flex;
+  width: 100%;
 }
 
 .sportsList {
@@ -17,7 +18,7 @@
 }
 
 .category {
-  flex: 1 1 15%;
+  width: 14rem;
   background-color: #202020;
 }
 

@@ -8,6 +8,9 @@ import VideoCategory from "./components/video_category/video_category";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SportsList from "./components/sports/sports_list";
 
+/* const categoryName = document.querySelector(".video_category_checked__3zWQt");
+const getName = categoryName.textContent; */
+
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
   const [sportsVideos, setSportsVideos] = useState([]);
@@ -32,6 +35,7 @@ function App({ youtube }) {
     youtube.sports().then((sport) => setSportsVideos(sport));
   }, [youtube]);
 
+  console.log(videos);
   console.log(sportsVideos);
   return (
     <BrowserRouter>
