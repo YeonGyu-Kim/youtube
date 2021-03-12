@@ -8,9 +8,6 @@ import VideoCategory from "./components/video_category/video_category";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SportsList from "./components/sports/sports_list";
 
-/* const categoryName = document.querySelector(".video_category_checked__3zWQt");
-const getName = categoryName.textContent; */
-
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
   const [sportsVideos, setSportsVideos] = useState([]);
@@ -41,44 +38,44 @@ function App({ youtube }) {
     <BrowserRouter>
       <div className={styles.app}>
         <SearchHeader onSearch={search} selectVideo={selectVideo} />
-        <section className={styles.content}>
-          {!selectedVideo && (
-            <ul className={styles.category}>
-              <VideoCategory />
-            </ul>
-          )}
-
-          <Switch>
-            <Route path='/watch/:id'>
-              {selectedVideo && (
-                <div className={styles.detail}>
-                  <VideoDetail video={selectedVideo} />
-                  <VideoList
-                    videos={videos}
-                    onClickVideo={selectVideo}
-                    display='list'
-                  />
-                </div>
-              )}
-            </Route>
-            <Route path={["/", "/home"]} exact>
-              {!selectedVideo && (
-                <div className={styles.list}>
-                  <VideoList
-                    videos={videos}
-                    onClickVideo={selectVideo}
-                    display='grid'
-                  />
-                </div>
-              )}
-            </Route>
-            <Route path='/sports' exact>
+        <Switch>
+          <Route path='/watch/:id'>
+            {selectedVideo && (
+              <div className={styles.detail}>
+                <VideoDetail video={selectedVideo} />
+                <VideoList
+                  videos={videos}
+                  onClickVideo={selectVideo}
+                  display='list'
+                />
+              </div>
+            )}
+          </Route>
+          <Route path={["/", "/home"]} exact>
+            <section className={styles.content}>
+              <ul className={styles.category}>
+                <VideoCategory />
+              </ul>
+              <div className={styles.list}>
+                <VideoList
+                  videos={videos}
+                  onClickVideo={selectVideo}
+                  display='grid'
+                />
+              </div>
+            </section>
+          </Route>
+          <Route path='/sports' exact>
+            <section className={styles.content}>
+              <ul className={styles.category}>
+                <VideoCategory />
+              </ul>
               <div className={styles.sportsList}>
                 <SportsList sports={sportsVideos} onClickVideo={selectVideo} />
               </div>
-            </Route>
-          </Switch>
-        </section>
+            </section>
+          </Route>
+        </Switch>
         <GlobalStyles />
       </div>
     </BrowserRouter>

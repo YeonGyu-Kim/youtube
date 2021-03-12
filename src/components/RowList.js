@@ -4,30 +4,32 @@ import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
-  padding: 1em 5em;
+  padding: 2em 4em 0em 4em;
 `;
 
 const Video = styled.img`
-  width: 15rem;
-  height: 8rem;
+  width: 23%;
 `;
 
-const Description = styled.div`
+const Content = styled.div`
   display: block;
+  margin-left: 1rem;
 `;
 
 const List = styled.li`
   display: flex;
-  color: beige;
 `;
 
-const RowList = ({ title, video, description }) => {
+const RowList = ({ title, video, channel, description }) => {
   return (
     <Container>
       <List>
         <Video src={video}></Video>
-        <h1>{title}</h1>
-        <h1>{description}</h1>
+        <Content>
+          <h1>{title}</h1>
+          <h1>{channel}</h1>
+          <h3>{description}</h3>
+        </Content>
       </List>
     </Container>
   );
