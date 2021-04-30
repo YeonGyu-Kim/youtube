@@ -32,22 +32,31 @@ function App({ youtube }) {
     youtube.sports().then((sport) => setSportsVideos(sport));
   }, [youtube]);
 
-  console.log(videos);
-  console.log(sportsVideos);
+  console.log(selectedVideo);
+
   return (
     <BrowserRouter>
       <div className={styles.app}>
         <SearchHeader onSearch={search} selectVideo={selectVideo} />
         <Switch>
           <Route path='/watch/:id'>
-            {selectedVideo && (
+            {selectedVideo && videos && (
               <div className={styles.detail}>
                 <VideoDetail video={selectedVideo} />
-                <VideoList
-                  videos={videos}
-                  onClickVideo={selectVideo}
-                  display='list'
-                />
+                {VideoList && (
+                  <VideoList
+                    videos={videos}
+                    onClickVideo={selectVideo}
+                    display='list'
+                  />
+                )}
+                {SportsList && (
+                  <SportsList
+                    sports={sportsVideos}
+                    onClickVideo={selectVideo}
+                    display='list'
+                  />
+                )}
               </div>
             )}
           </Route>
@@ -71,7 +80,11 @@ function App({ youtube }) {
                 <VideoCategory />
               </ul>
               <div className={styles.sportsList}>
-                <SportsList sports={sportsVideos} onClickVideo={selectVideo} />
+                <SportsList
+                  sports={sportsVideos}
+                  onClickVideo={selectVideo}
+                  display='list'
+                />
               </div>
             </section>
           </Route>

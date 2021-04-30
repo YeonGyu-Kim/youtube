@@ -6,14 +6,15 @@ const VideoList = ({ videos, onClickVideo, display }) => {
   const displayList = display === "list";
   return (
     <ul className={`${styles.videos} ${displayList && styles.videoList}  `}>
-      {videos.map((video) => (
-        <VideoItem
-          key={video.etag}
-          video={video}
-          onClickVideo={onClickVideo}
-          display={display}
-        />
-      ))}
+      {videos &&
+        videos.map((video) => (
+          <VideoItem
+            key={video.etag}
+            video={video}
+            onClickVideo={onClickVideo}
+            display={display}
+          />
+        ))}
     </ul>
   );
 };

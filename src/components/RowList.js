@@ -20,17 +20,27 @@ const List = styled.li`
   display: flex;
 `;
 
-const RowList = ({ title, video, channel, description }) => {
+const RowList = ({
+  title,
+  video,
+  channel,
+  description,
+  id,
+  click,
+  display,
+}) => {
   return (
     <Container>
-      <List>
-        <Video src={video}></Video>
-        <Content>
-          <h1>{title}</h1>
-          <h1>{channel}</h1>
-          <h3>{description}</h3>
-        </Content>
-      </List>
+      <Link to={`/watch/${id}`}>
+        <List onClick={click} className={display}>
+          <Video src={video}></Video>
+          <Content>
+            <h1>{title}</h1>
+            <h1>{channel}</h1>
+            <h3>{description}</h3>
+          </Content>
+        </List>
+      </Link>
     </Container>
   );
 };
