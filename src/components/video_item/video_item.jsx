@@ -12,7 +12,7 @@ const VideoItem = memo(
         }`}
         onClick={() => onClickVideo(video)}
       >
-        <Link to={`/watch/${id}`}>
+        <Link to={`/watch/v=${id}`}>
           <div
             className={`${styles.video} ${
               displayList ? styles.videoList : styles.videoGrid

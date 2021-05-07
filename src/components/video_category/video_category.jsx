@@ -19,30 +19,45 @@ const VideoCategory = ({ location: { pathname } }) => {
   return (
     <section className={styles.container}>
       <div className={styles.listContainer}>
-        <li className={`${styles.list} ${checkedHome && styles.checked}`}>
-          <span onClick={goHome}>홈</span>
+        <li
+          className={`${styles.list} ${checkedHome && styles.checked}`}
+          onClick={goHome}
+        >
+          <span>홈</span>
         </li>
-        <li className={`${styles.list} ${checkedPopular && styles.checked}`}>
-          <Link to='/popular'>인기</Link>
-        </li>
+        <Link to='/popular'>
+          <li className={`${styles.list} ${checkedPopular && styles.checked}`}>
+            <span>인기</span>
+          </li>
+        </Link>
       </div>
       <div className={styles.listContainer}>
         <li className={styles.title}>인기 YOUTUBE</li>
-        <li className={`${styles.list} ${checkedMusic && styles.checked}`}>
-          <Link to='/music'>음악</Link>
-        </li>
-        <li className={`${styles.list} ${checkedSport && styles.checked}`}>
-          <Link to='/sports'>스포츠</Link>
-        </li>
-        <li className={`${styles.list} ${checkedGame && styles.checked}`}>
-          <Link to='/game'>게임</Link>
-        </li>
-        <li className={`${styles.list} ${checkedMovie && styles.checked}`}>
-          <Link to='/movie'>영화</Link>
-        </li>
-        <li className={`${styles.list} ${checkedNews && styles.checked}`}>
-          <Link to='/news'>뉴스</Link>
-        </li>
+        <Link to='/music'>
+          <li className={`${styles.list} ${checkedMusic && styles.checked}`}>
+            <span>음악</span>
+          </li>
+        </Link>
+        <Link to='/sports'>
+          <li className={`${styles.list} ${checkedSport && styles.checked}`}>
+            <span>스포츠</span>
+          </li>
+        </Link>
+        <Link to='/game'>
+          <li className={`${styles.list} ${checkedGame && styles.checked}`}>
+            <span>게임</span>
+          </li>
+        </Link>
+        <Link to='/movie'>
+          <li className={`${styles.list} ${checkedMovie && styles.checked}`}>
+            <span>영화</span>
+          </li>
+        </Link>
+        <Link to='/news'>
+          <li className={`${styles.list} ${checkedNews && styles.checked}`}>
+            <span>뉴스</span>
+          </li>
+        </Link>
       </div>
     </section>
   );

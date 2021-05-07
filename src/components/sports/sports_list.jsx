@@ -2,10 +2,9 @@ import { memo } from "react";
 import RowList from "../rowList";
 import styles from "./sports_list.module.css";
 
-const SportsList = memo(({ result, sports, onClickVideo, display }) => {
-  const displayList = display === "list";
+const SportsList = memo(({ sports, onClickVideo }) => {
   return (
-    <ul>
+    <ul className={styles.sports}>
       {sports.map((sport) => (
         <RowList
           id={sport.id}
@@ -15,7 +14,6 @@ const SportsList = memo(({ result, sports, onClickVideo, display }) => {
           channel={sport.snippet.channelTitle}
           description={sport.snippet.description}
           click={() => onClickVideo(sport)}
-          display={displayList ? styles.list : styles.grid}
         />
       ))}
     </ul>

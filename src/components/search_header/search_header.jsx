@@ -1,5 +1,5 @@
 import React, { memo, useRef } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import styles from "./search_header.module.css";
 
 const SearchHeader = memo(({ onSearch, selectVideo }) => {
@@ -40,20 +40,22 @@ const SearchHeader = memo(({ onSearch, selectVideo }) => {
         </span>
       </div>
 
-      <input
-        ref={inputRef}
-        className={styles.input}
-        type='text'
-        placeholder='Search..'
-        onKeyPress={onKeyPress}
-      />
-      <button className={styles.button} type='submit' onClick={onClick}>
-        <img
-          className={styles.searchBtn}
-          src='images/search.png'
-          alt='search'
+      <section className={styles.searchContainer}>
+        <input
+          ref={inputRef}
+          className={styles.input}
+          type='text'
+          placeholder='Search..'
+          onKeyPress={onKeyPress}
         />
-      </button>
+        <button className={styles.button} type='submit' onClick={onClick}>
+          <img
+            className={styles.searchBtn}
+            src='images/search.png'
+            alt='search'
+          />
+        </button>
+      </section>
     </header>
   );
 });

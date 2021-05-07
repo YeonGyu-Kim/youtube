@@ -20,6 +20,22 @@ const List = styled.li`
   display: flex;
 `;
 
+const Title = styled.span`
+  display: block;
+  font-size: 1.2em;
+`;
+
+const Channel = styled.div`
+  font-size: 0.8em;
+  margin: 1em 0;
+  opacity: 0.7;
+`;
+
+const Description = styled.span`
+  font-size: 0.8em;
+  opacity: 0.7;
+`;
+
 const RowList = ({
   title,
   video,
@@ -31,13 +47,17 @@ const RowList = ({
 }) => {
   return (
     <Container>
-      <Link to={`/watch/${id}`}>
+      <Link to={`/watch/v=${id}`}>
         <List onClick={click} className={display}>
           <Video src={video}></Video>
           <Content>
-            <h1>{title}</h1>
-            <h1>{channel}</h1>
-            <h3>{description}</h3>
+            <Title>{title}</Title>
+            <Channel>{channel}</Channel>
+            <Description>
+              {description.length > 25
+                ? `${description.substring(0, 150)}...}`
+                : description}
+            </Description>
           </Content>
         </List>
       </Link>
