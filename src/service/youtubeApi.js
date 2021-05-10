@@ -44,6 +44,16 @@ class Youtube {
     });
     return response.data.items;
   }
+
+  async music() {
+    const response = await this.youtube.get("videos", {
+      params: {
+        chart: "mostPopular",
+        videoCategoryId: 10,
+      },
+    });
+    return response.data.items;
+  }
 }
 
 export default Youtube;

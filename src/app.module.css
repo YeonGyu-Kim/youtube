@@ -1,4 +1,5 @@
 .content {
+  width: 100%;
   display: flex;
   padding: 0;
 }
@@ -12,17 +13,14 @@
   width: 100%;
 }
 
-.sportsList {
+.sportsList,
+.musicList {
   flex: 1 1 85%;
 }
 
 .category {
   width: 14rem;
   background-color: #202020;
-}
-
-.sportsCategory {
-  display: none;
 }
 
 @media screen and (max-width: 48rem) {

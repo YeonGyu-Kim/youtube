@@ -4,7 +4,7 @@ import styles from "./sports_list.module.css";
 
 const SportsList = memo(({ sports, onClickVideo }) => {
   return (
-    <ul className={styles.sports}>
+    <ul>
       {sports.map((sport) => (
         <RowList
           id={sport.id}

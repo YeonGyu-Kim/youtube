@@ -7,9 +7,11 @@ import VideoDetail from "./components/video_detail/video_detail";
 import VideoCategory from "./components/video_category/video_category";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SportsList from "./components/sports/sports_list";
+import MusicList from "./components/music/music_list";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
+  const [musicVideos, setMusicVideos] = useState([]);
   const [sportsVideos, setSportsVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
@@ -29,7 +31,11 @@ function App({ youtube }) {
   }, [youtube]);
 
   useEffect(() => {
-    youtube.sports().then((sport) => setSportsVideos(sport));
+    youtube.sports().then((video) => setSportsVideos(video));
+  }, [youtube]);
+
+  useEffect(() => {
+    youtube.music().then((video) => setMusicVideos(video));
   }, [youtube]);
 
   return (
@@ -74,6 +80,20 @@ function App({ youtube }) {
               <div className={styles.sportsList}>
                 <SportsList
                   sports={sportsVideos}
+                  onClickVideo={selectVideo}
+                  display='list'
+                />
+              </div>
+            </section>
+          </Route>
+          <Route path='/music' exact>
+            <section className={styles.content}>
+              <ul className={styles.category}>
+                <VideoCategory />
+              </ul>
+              <div className={styles.musicList}>
+                <MusicList
+                  music={musicVideos}
                   onClickVideo={selectVideo}
                   display='list'
                 />
