@@ -8,11 +8,15 @@ import VideoCategory from "./components/video_category/video_category";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import SportsList from "./components/sports/sports_list";
 import MusicList from "./components/music/music_list";
+import MoviesList from "./components/movies/movies_list";
+import GamesList from "./components/games/games_list";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
   const [musicVideos, setMusicVideos] = useState([]);
   const [sportsVideos, setSportsVideos] = useState([]);
+  const [gamesVideos, setGamesVideos] = useState([]);
+  const [moviesVideos, setMoviesVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const selectVideo = (video) => {
@@ -37,6 +41,14 @@ function App({ youtube }) {
   useEffect(() => {
     youtube.music().then((video) => setMusicVideos(video));
   }, [youtube]);
+
+  useEffect(() => {
+    youtube.games().then((video) => setGamesVideos(video));
+  });
+
+  useEffect(() => {
+    youtube.movies().then((video) => setMoviesVideos(video));
+  });
 
   return (
     <BrowserRouter>
@@ -94,6 +106,34 @@ function App({ youtube }) {
               <div className={styles.musicList}>
                 <MusicList
                   music={musicVideos}
+                  onClickVideo={selectVideo}
+                  display='list'
+                />
+              </div>
+            </section>
+          </Route>
+          <Route path='/games' exact>
+            <section className={styles.content}>
+              <ul className={styles.category}>
+                <VideoCategory />
+              </ul>
+              <div className={styles.gamesList}>
+                <GamesList
+                  games={gamesVideos}
+                  onClickVideo={selectVideo}
+                  display='list'
+                />
+              </div>
+            </section>
+          </Route>
+          <Route path='/movies' exact>
+            <section className={styles.content}>
+              <ul className={styles.category}>
+                <VideoCategory />
+              </ul>
+              <div className={styles.moviesList}>
+                <MoviesList
+                  movies={moviesVideos}
                   onClickVideo={selectVideo}
                   display='list'
                 />

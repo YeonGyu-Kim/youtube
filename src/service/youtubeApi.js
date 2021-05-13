@@ -54,6 +54,26 @@ class Youtube {
     });
     return response.data.items;
   }
+
+  async games() {
+    const response = await this.youtube.get("videos", {
+      params: {
+        chart: "mostPopular",
+        videoCategoryId: 20,
+      },
+    });
+    return response.data.items;
+  }
+
+  async movies() {
+    const response = await this.youtube.get("videos", {
+      params: {
+        chart: "mostPopular",
+        videoCategoryId: 1,
+      },
+    });
+    return response.data.items;
+  }
 }
 
 export default Youtube;

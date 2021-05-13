@@ -43,12 +43,12 @@ const VideoCategory = ({ location: { pathname } }) => {
             <span>스포츠</span>
           </li>
         </Link>
-        <Link to='/game'>
+        <Link to='/games'>
           <li className={`${styles.list} ${checkedGame && styles.checked}`}>
             <span>게임</span>
           </li>
         </Link>
-        <Link to='/movie'>
+        <Link to='/movies'>
           <li className={`${styles.list} ${checkedMovie && styles.checked}`}>
             <span>영화</span>
           </li>
