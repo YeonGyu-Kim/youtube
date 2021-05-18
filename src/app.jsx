@@ -10,6 +10,7 @@ import SportsList from "./components/sports/sports_list";
 import MusicList from "./components/music/music_list";
 import MoviesList from "./components/movies/movies_list";
 import GamesList from "./components/games/games_list";
+import NewsList from "./components/news/news_list";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
@@ -17,6 +18,7 @@ function App({ youtube }) {
   const [sportsVideos, setSportsVideos] = useState([]);
   const [gamesVideos, setGamesVideos] = useState([]);
   const [moviesVideos, setMoviesVideos] = useState([]);
+  const [newsVideos, setNewsVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const selectVideo = (video) => {
@@ -44,11 +46,15 @@ function App({ youtube }) {
 
   useEffect(() => {
     youtube.games().then((video) => setGamesVideos(video));
-  });
+  }, [youtube]);
 
   useEffect(() => {
     youtube.movies().then((video) => setMoviesVideos(video));
-  });
+  }, [youtube]);
+
+  useEffect(() => {
+    youtube.news().then((video) => setNewsVideos(video));
+  }, [youtube]);
 
   return (
     <BrowserRouter>
@@ -134,6 +140,20 @@ function App({ youtube }) {
               <div className={styles.moviesList}>
                 <MoviesList
                   movies={moviesVideos}
+                  onClickVideo={selectVideo}
+                  display='list'
+                />
+              </div>
+            </section>
+          </Route>
+          <Route path='/news' exact>
+            <section className={styles.content}>
+              <ul className={styles.category}>
+                <VideoCategory />
+              </ul>
+              <div className={styles.newsList}>
+                <NewsList
+                  news={newsVideos}
                   onClickVideo={selectVideo}
                   display='list'
                 />

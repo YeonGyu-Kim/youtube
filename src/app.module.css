@@ -16,7 +16,8 @@
 .sportsList,
 .musicList,
 .moviesList,
-.gamesList {
+.gamesList,
+.newsList {
   flex: 1 1 85%;
 }
 
