@@ -32,6 +32,8 @@ function App({ youtube }) {
     [youtube]
   );
 
+  const categoryId = () => {};
+
   useEffect(() => {
     youtube.mostPopular().then((video) => setVideos(video));
   }, [youtube]);
@@ -56,6 +58,7 @@ function App({ youtube }) {
     youtube.news().then((video) => setNewsVideos(video));
   }, [youtube]);
 
+  console.log(videos);
   return (
     <BrowserRouter>
       <div className={styles.app}>
@@ -65,13 +68,40 @@ function App({ youtube }) {
             {selectedVideo && (
               <div className={`${styles.detail} `}>
                 <VideoDetail video={selectedVideo} />
-                <VideoList
-                  videos={videos}
-                  onClickVideo={selectVideo}
-                  display='list'
-                  category='popular'
-                />
-                )
+                {selectedVideo.snippet.categoryId == "1" && (
+                  <div className={styles.list}>
+                    <VideoList
+                      videos={videos}
+                      onClickVideo={selectVideo}
+                      display='grid'
+                      category='popular'
+                    />
+                  </div>
+                )}
+                {selectedVideo.snippet.categoryId == "17" && (
+                  <SportsList
+                    sports={sportsVideos}
+                    onClickVideo={selectVideo}
+                    display='list'
+                    describe='false'
+                  />
+                )}
+                {selectedVideo.snippet.categoryId == "20" && (
+                  <GamesList
+                    games={gamesVideos}
+                    onClickVideo={selectVideo}
+                    display='list'
+                    describe='false'
+                  />
+                )}
+                {selectedVideo.snippet.categoryId == "10" && (
+                  <MusicList
+                    music={musicVideos}
+                    onClickVideo={selectVideo}
+                    display='list'
+                    describe='false'
+                  />
+                )}
               </div>
             )}
           </Route>
@@ -100,6 +130,7 @@ function App({ youtube }) {
                   sports={sportsVideos}
                   onClickVideo={selectVideo}
                   display='list'
+                  describe='true'
                 />
               </div>
             </section>

@@ -24,7 +24,10 @@ const GlobalStyles = createGlobalStyle`
         display:flex;
         justify-content:center;
         
+        
+        
     }
+    
 `;
 
 export default GlobalStyles;

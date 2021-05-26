@@ -1,39 +1,35 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import styles from "./rowList.module.css";
 
-const Container = styled.div`
-  width: 100%;
-  padding: 2em 4em 0em 4em;
-`;
+const List = styled.li``;
 
-const Video = styled.img`
-  width: 23%;
-`;
+const Video = styled.img``;
 
 const Content = styled.div`
-  display: block;
-  margin-left: 1rem;
-`;
-
-const List = styled.li`
   display: flex;
 `;
 
-const Title = styled.span`
+const Item = styled.div``;
+
+const Title = styled.div`
   display: block;
-  font-size: 1.2em;
 `;
 
 const Channel = styled.div`
-  font-size: 0.8em;
+  font-size: 0.9em;
   margin: 1em 0;
   opacity: 0.7;
 `;
 
-const Description = styled.span`
-  font-size: 0.8em;
+const Description = styled.div`
+  font-size: 0.75em;
   opacity: 0.7;
+  max-height: 3rem;
+  overflow: hidden;
+  letter-spacing: 0.04rem;
+  line-height: 1.4rem;
 `;
 
 const RowList = ({
@@ -44,24 +40,42 @@ const RowList = ({
   id,
   click,
   display,
+  describe,
 }) => {
+  const describeFalse = describe === "false";
   return (
-    <Container>
+    <List
+      className={`${describeFalse ? styles.changeList : styles.list}`}
+      onClick={click}
+    >
       <Link to={`/watch/v=${id}`}>
-        <List onClick={click} className={display}>
-          <Video src={video}></Video>
-          <Content>
-            <Title>{title}</Title>
+        <Content
+          className={`${describeFalse ? styles.changeContent : styles.content}`}
+        >
+          <Video
+            className={`${describeFalse ? styles.changeVideo : styles.video}`}
+            src={video}
+          ></Video>
+          <Item
+            className={`${describeFalse ? styles.changeItem : styles.item}`}
+          >
+            <Title
+              className={`${describeFalse ? styles.changeTitle : styles.title}`}
+            >
+              {describeFalse && title.length > 28
+                ? `${title.substring(0, 28)}... `
+                : title}
+            </Title>
             <Channel>{channel}</Channel>
             <Description>
-              {description.length > 25
+              {description && description.length > 25
                 ? `${description.substring(0, 150)}...}`
                 : description}
             </Description>
-          </Content>
-        </List>
+          </Item>
+        </Content>
       </Link>
-    </Container>
+    </List>
   );
 };
 
