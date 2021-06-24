@@ -58,7 +58,7 @@ function App({ youtube }) {
     youtube.news().then((video) => setNewsVideos(video));
   }, [youtube]);
 
-  console.log(videos);
+  console.log(moviesVideos);
   return (
     <BrowserRouter>
       <div className={styles.app}>
@@ -68,7 +68,7 @@ function App({ youtube }) {
             {selectedVideo && (
               <div className={`${styles.detail} `}>
                 <VideoDetail video={selectedVideo} />
-                {selectedVideo.snippet.categoryId == "1" && (
+                {selectedVideo.snippet.categoryId === "1" ? (
                   <div className={styles.list}>
                     <VideoList
                       videos={videos}
@@ -77,29 +77,45 @@ function App({ youtube }) {
                       category='popular'
                     />
                   </div>
-                )}
-                {selectedVideo.snippet.categoryId == "17" && (
+                ) : selectedVideo.snippet.categoryId === "17" ? (
                   <SportsList
                     sports={sportsVideos}
                     onClickVideo={selectVideo}
                     display='list'
                     describe='false'
                   />
-                )}
-                {selectedVideo.snippet.categoryId == "20" && (
+                ) : selectedVideo.snippet.categoryId === "20" ? (
                   <GamesList
                     games={gamesVideos}
                     onClickVideo={selectVideo}
                     display='list'
                     describe='false'
                   />
-                )}
-                {selectedVideo.snippet.categoryId == "10" && (
+                ) : selectedVideo.snippet.categoryId === "10" ? (
                   <MusicList
                     music={musicVideos}
                     onClickVideo={selectVideo}
                     display='list'
                     describe='false'
+                  />
+                ) : selectedVideo.snippet.categoryId === "24" ? (
+                  <MoviesList
+                    movies={moviesVideos}
+                    onClickVideo={selectVideo}
+                    display='list'
+                  />
+                ) : selectedVideo.snippet.categoryId === "25" ? (
+                  <NewsList
+                    news={newsVideos}
+                    onClickVideo={selectVideo}
+                    display='list'
+                  />
+                ) : (
+                  <VideoList
+                    videos={videos}
+                    onClickVideo={selectVideo}
+                    display='grid'
+                    category='popular'
                   />
                 )}
               </div>

@@ -69,7 +69,7 @@ class Youtube {
     const response = await this.youtube.get("videos", {
       params: {
         chart: "mostPopular",
-        videoCategoryId: 1,
+        videoCategoryId: 24,
       },
     });
     return response.data.items;
