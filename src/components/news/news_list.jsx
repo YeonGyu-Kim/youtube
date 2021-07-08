@@ -1,9 +1,17 @@
 import { memo } from "react";
 import RowList from "../rowList";
+import styles from "./news_list.module.css";
 
-const NewsList = memo(({ news, onClickVideo }) => {
+const NewsList = memo(({ news, onClickVideo, display, describe }) => {
+  const displayList = display === "list";
+  const describeFalse = describe === "false";
+
   return (
-    <ul>
+    <ul
+      className={`${styles.videos} ${
+        displayList ? styles.videoList : styles.videoGrid
+      }`}
+    >
       {news.map((news) => (
         <RowList
           id={news.id}
@@ -11,8 +19,9 @@ const NewsList = memo(({ news, onClickVideo }) => {
           title={news.snippet.title}
           video={news.snippet.thumbnails.medium.url}
           channel={news.snippet.channelTitle}
-          description={news.snippet.description}
+          description={describeFalse ? null : news.snippet.description}
           click={() => onClickVideo(news)}
+          describe={describe}
         />
       ))}
     </ul>

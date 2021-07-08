@@ -5,6 +5,7 @@ import styles from "./sports_list.module.css";
 const SportsList = memo(({ sports, onClickVideo, display, describe }) => {
   const displayList = display === "list";
   const describeFalse = describe === "false";
+
   return (
     <ul
       className={`${styles.videos} ${

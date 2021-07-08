@@ -9,7 +9,7 @@ const SearchHeader = memo(({ onSearch, selectVideo }) => {
   const handleSearch = () => {
     const value = inputRef.current.value;
     onSearch(value);
-    history.push("/");
+    history.push(`/result/search_query=${value}`);
   };
   const onClick = () => {
     handleSearch();

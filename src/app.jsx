@@ -11,6 +11,7 @@ import MusicList from "./components/music/music_list";
 import MoviesList from "./components/movies/movies_list";
 import GamesList from "./components/games/games_list";
 import NewsList from "./components/news/news_list";
+import SearchList from "./components/search/search_list";
 
 function App({ youtube }) {
   const [videos, setVideos] = useState([]);
@@ -19,6 +20,7 @@ function App({ youtube }) {
   const [gamesVideos, setGamesVideos] = useState([]);
   const [moviesVideos, setMoviesVideos] = useState([]);
   const [newsVideos, setNewsVideos] = useState([]);
+  const [searchVideos, setSearchVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const selectVideo = (video) => {
@@ -27,7 +29,7 @@ function App({ youtube }) {
   const search = useCallback(
     (query) => {
       setSelectedVideo(null);
-      youtube.search(query).then((video) => setVideos(video));
+      youtube.search(query).then((video) => setSearchVideos(video));
     },
     [youtube]
   );
@@ -58,7 +60,6 @@ function App({ youtube }) {
     youtube.news().then((video) => setNewsVideos(video));
   }, [youtube]);
 
-  console.log(moviesVideos);
   return (
     <BrowserRouter>
       <div className={styles.app}>
@@ -73,7 +74,7 @@ function App({ youtube }) {
                     <VideoList
                       videos={videos}
                       onClickVideo={selectVideo}
-                      display='grid'
+                      display='list'
                       category='popular'
                     />
                   </div>
@@ -82,6 +83,7 @@ function App({ youtube }) {
                     sports={sportsVideos}
                     onClickVideo={selectVideo}
                     display='list'
+                    title='cut'
                     describe='false'
                   />
                 ) : selectedVideo.snippet.categoryId === "20" ? (
@@ -103,18 +105,21 @@ function App({ youtube }) {
                     movies={moviesVideos}
                     onClickVideo={selectVideo}
                     display='list'
+                    describe='false'
                   />
                 ) : selectedVideo.snippet.categoryId === "25" ? (
                   <NewsList
                     news={newsVideos}
                     onClickVideo={selectVideo}
                     display='list'
+                    title='cut'
+                    describe='false'
                   />
                 ) : (
                   <VideoList
                     videos={videos}
                     onClickVideo={selectVideo}
-                    display='grid'
+                    display='list'
                     category='popular'
                   />
                 )}
@@ -132,6 +137,21 @@ function App({ youtube }) {
                   onClickVideo={selectVideo}
                   display='grid'
                   category='popular'
+                />
+              </div>
+            </section>
+          </Route>
+          <Route path={`/result/search_query=:value`} exact>
+            <section className={styles.content}>
+              <ul className={styles.category}>
+                <VideoCategory />
+              </ul>
+              <div className={styles.sportsList}>
+                <SearchList
+                  search={searchVideos}
+                  onClickVideo={selectVideo}
+                  display='list'
+                  describe='true'
                 />
               </div>
             </section>
@@ -161,6 +181,7 @@ function App({ youtube }) {
                   music={musicVideos}
                   onClickVideo={selectVideo}
                   display='list'
+                  describe='true'
                 />
               </div>
             </section>
@@ -175,6 +196,7 @@ function App({ youtube }) {
                   games={gamesVideos}
                   onClickVideo={selectVideo}
                   display='list'
+                  describe='true'
                 />
               </div>
             </section>
@@ -189,6 +211,7 @@ function App({ youtube }) {
                   movies={moviesVideos}
                   onClickVideo={selectVideo}
                   display='list'
+                  describe='true'
                 />
               </div>
             </section>
@@ -203,6 +226,7 @@ function App({ youtube }) {
                   news={newsVideos}
                   onClickVideo={selectVideo}
                   display='list'
+                  describe='true'
                 />
               </div>
             </section>
