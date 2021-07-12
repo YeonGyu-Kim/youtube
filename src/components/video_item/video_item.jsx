@@ -5,6 +5,7 @@ import styles from "./video_item.module.css";
 const VideoItem = memo(
   ({ video, video: { snippet }, video: { id }, onClickVideo, display }) => {
     const displayList = display === "list";
+
     return (
       <li
         className={`${styles.container} ${

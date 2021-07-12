@@ -19,6 +19,10 @@
   box-shadow: 7px 8px 7px -1px rgba(0, 0, 0, 0.75);
 }
 
+.changeList:hover {
+  transform: scale(1.02);
+}
+
 .changeVideo {
   width: 45%;
 }

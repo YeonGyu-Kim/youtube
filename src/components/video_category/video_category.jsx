@@ -25,11 +25,6 @@ const VideoCategory = ({ location: { pathname } }) => {
         >
           <span>홈</span>
         </li>
-        <Link to='/popular'>
-          <li className={`${styles.list} ${checkedPopular && styles.checked}`}>
-            <span>인기</span>
-          </li>
-        </Link>
       </div>
       <div className={styles.listContainer}>
         <li className={styles.title}>인기 YOUTUBE</li>

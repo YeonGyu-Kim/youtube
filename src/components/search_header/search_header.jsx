@@ -29,15 +29,13 @@ const SearchHeader = memo(({ onSearch, selectVideo }) => {
 
   return (
     <header className={styles.container}>
-      <div className={styles.home}>
+      <div className={styles.home} onClick={goHome}>
         <img
           className={styles.home__icon}
           src='images/logo.png'
           alt='logo'
         ></img>
-        <span className={styles.title} onClick={goHome}>
-          YouTube
-        </span>
+        <span className={styles.title}>YouTube</span>
       </div>
 
       <section className={styles.searchContainer}>

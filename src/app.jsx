@@ -20,10 +20,12 @@ function App({ youtube }) {
   const [gamesVideos, setGamesVideos] = useState([]);
   const [moviesVideos, setMoviesVideos] = useState([]);
   const [newsVideos, setNewsVideos] = useState([]);
+  const [channelsInfo, setChannelsInfo] = useState([]);
   const [searchVideos, setSearchVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
   const selectVideo = (video) => {
+    window.scrollTo(0, 0);
     setSelectedVideo(video);
   };
   const search = useCallback(
@@ -33,8 +35,6 @@ function App({ youtube }) {
     },
     [youtube]
   );
-
-  const categoryId = () => {};
 
   useEffect(() => {
     youtube.mostPopular().then((video) => setVideos(video));
