@@ -20,7 +20,6 @@ function App({ youtube }) {
   const [gamesVideos, setGamesVideos] = useState([]);
   const [moviesVideos, setMoviesVideos] = useState([]);
   const [newsVideos, setNewsVideos] = useState([]);
-  const [channelsInfo, setChannelsInfo] = useState([]);
   const [searchVideos, setSearchVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 

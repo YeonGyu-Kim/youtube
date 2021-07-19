@@ -5,7 +5,6 @@ import styles from "./video_category.module.css";
 const VideoCategory = ({ location: { pathname } }) => {
   const history = useHistory();
   const checkedHome = pathname === "/";
-  const checkedPopular = pathname === "/popular";
   const checkedMusic = pathname === "/music";
   const checkedSport = pathname === "/sports";
   const checkedGame = pathname === "/game";

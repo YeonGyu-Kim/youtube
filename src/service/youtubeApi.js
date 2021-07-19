@@ -72,7 +72,7 @@ class Youtube {
         videoCategoryId: 24,
       },
     });
-    return response.data.items;
+    return response.data;
   }
 
   async news() {
@@ -82,7 +82,7 @@ class Youtube {
         videoCategoryId: 25,
       },
     });
-    return response.data.items;
+    return response.data;
   }
 }
 
