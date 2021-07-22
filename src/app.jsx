@@ -59,6 +59,7 @@ function App({ youtube }) {
     youtube.news().then((video) => setNewsVideos(video));
   }, [youtube]);
 
+  console.log(newsVideos);
   return (
     <BrowserRouter>
       <div className={styles.app}>

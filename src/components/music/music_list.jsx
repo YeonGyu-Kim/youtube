@@ -11,18 +11,19 @@ const MusicList = memo(({ music, onClickVideo, display, describe }) => {
         displayList ? styles.videoList : styles.videoGrid
       }`}
     >
-      {music.map((music) => (
-        <RowList
-          id={music.id}
-          key={music.id}
-          title={music.snippet.title}
-          video={music.snippet.thumbnails.medium.url}
-          channel={music.snippet.channelTitle}
-          description={describeFalse ? null : music.snippet.description}
-          click={() => onClickVideo(music)}
-          describe={describe}
-        />
-      ))}
+      {music &&
+        music.map((music) => (
+          <RowList
+            id={music.id}
+            key={music.id}
+            title={music.snippet.title}
+            video={music.snippet.thumbnails.medium.url}
+            channel={music.snippet.channelTitle}
+            description={describeFalse ? null : music.snippet.description}
+            click={() => onClickVideo(music)}
+            describe={describe}
+          />
+        ))}
     </ul>
   );
 });

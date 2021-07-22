@@ -12,18 +12,19 @@ const SportsList = memo(({ sports, onClickVideo, display, describe }) => {
         displayList ? styles.videoList : styles.videoGrid
       }`}
     >
-      {sports.map((sport) => (
-        <RowList
-          id={sport.id}
-          key={sport.id}
-          title={sport.snippet.title}
-          video={sport.snippet.thumbnails.medium.url}
-          channel={sport.snippet.channelTitle}
-          description={describeFalse ? null : sport.snippet.description}
-          click={() => onClickVideo(sport)}
-          describe={describe}
-        />
-      ))}
+      {sports &&
+        sports.map((sport) => (
+          <RowList
+            id={sport.id}
+            key={sport.id}
+            title={sport.snippet.title}
+            video={sport.snippet.thumbnails.medium.url}
+            channel={sport.snippet.channelTitle}
+            description={describeFalse ? null : sport.snippet.description}
+            click={() => onClickVideo(sport)}
+            describe={describe}
+          />
+        ))}
     </ul>
   );
 });

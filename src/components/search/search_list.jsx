@@ -11,18 +11,19 @@ const SearchList = memo(({ search, onClickVideo, display, describe }) => {
         displayList ? styles.videoList : styles.videoGrid
       }`}
     >
-      {search.map((search) => (
-        <RowList
-          id={search.id}
-          key={search.id}
-          title={search.snippet.title}
-          video={search.snippet.thumbnails.medium.url}
-          channel={search.snippet.channelTitle}
-          description={describeFalse ? null : search.snippet.description}
-          click={() => onClickVideo(search)}
-          describe={describe}
-        />
-      ))}
+      {search &&
+        search.map((search) => (
+          <RowList
+            id={search.id}
+            key={search.id}
+            title={search.snippet.title}
+            video={search.snippet.thumbnails.medium.url}
+            channel={search.snippet.channelTitle}
+            description={describeFalse ? null : search.snippet.description}
+            click={() => onClickVideo(search)}
+            describe={describe}
+          />
+        ))}
     </ul>
   );
 });
