@@ -23,10 +23,10 @@ function App({ youtube }) {
   const [searchVideos, setSearchVideos] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
 
-  const selectVideo = (video) => {
+  const selectVideo = useCallback((video) => {
     window.scrollTo(0, 0);
     setSelectedVideo(video);
-  };
+  }, []);
   const search = useCallback(
     (query) => {
       setSelectedVideo(null);
@@ -59,7 +59,6 @@ function App({ youtube }) {
     youtube.news().then((video) => setNewsVideos(video));
   }, [youtube]);
 
-  console.log(newsVideos);
   return (
     <BrowserRouter>
       <div className={styles.app}>

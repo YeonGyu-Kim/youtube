@@ -5,7 +5,6 @@ import styles from "./search_header.module.css";
 const SearchHeader = memo(({ onSearch, selectVideo }) => {
   const history = useHistory();
   const inputRef = useRef();
-
   const handleSearch = () => {
     const value = inputRef.current.value;
     onSearch(value);
